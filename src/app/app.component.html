@@ -1,8 +1,18 @@
 <div class="track-that__banner">
   <h1>Track That</h1>
 </div>
+<div class="notices">
+  <div *ngIf="successMessage" class="success" (click)="successMessage = null">{{ successMessage }}</div>
+</div>
 <div class="track-that__boards">
   <task-board title="Planned" [tasks]="plannedTasks" (removeTask)="handleRemoveTask($event)"></task-board>
   <task-board title="In Progress" [tasks]="inProgressTasks" (removeTask)="handleRemoveTask($event)"></task-board>
   <task-board title="Completed" [tasks]="completedTasks" (removeTask)="handleRemoveTask($event)"></task-board>
 </div>
+<modal [show]="showRemoveTaskModal" (close)="cancelRemoveTask($event)" maxWidth="400px">
+  <h4 class="text-centered mt-0">Are you sure you want to delete this task?</h4>
+  <div class="modal__actions centered">
+    <btn label="Yes" additionalClasses="add big" (click)="removeTask($event)"></btn>
+    <btn label="No" additionalClasses="remove big" (click)="cancelRemoveTask($event)"></btn>
+  </div>
+</modal>

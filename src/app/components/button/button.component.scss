@@ -28,4 +28,9 @@ $warning: #E35656;
   &.remove {
     background: $warning;
   }
+
+  &.big {
+    padding: 8px 25px;
+    font-size: 1.6em;
+  }
 }

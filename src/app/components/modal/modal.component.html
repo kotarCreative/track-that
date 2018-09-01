@@ -1,0 +1,15 @@
+<div *ngIf="show" class="modal__mask" (click)="handleClose($event)">
+  <div class="modal__wrapper">
+    <div class="modal__content {{ size }}" [ngStyle]="styles">
+      <div class="modal__header">
+        <div class="title">
+          <ng-content select="[title]"></ng-content>
+        </div>
+        <span class="close-btn" (click)="handleClose($event)">&times;</span>
+      </div>
+      <div class="modal__body">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

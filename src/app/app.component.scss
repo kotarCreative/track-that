@@ -1,10 +1,11 @@
+$success: #73C85E;
+
 .track-that {
   &__banner {
     text-align: center;
     background: #DA7E3B;
     color: #fff;
     padding: 10px;
-    margin-bottom: 40px;
 
     h1 {
       margin: 0px;
@@ -16,5 +17,31 @@
     justify-content: space-between;
     margin-bottom: 40px;
     align-items: flex-start;
+  }
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+
+  &.centered {
+    justify-content: center;
+  }
+
+  btn {
+    margin-left: 5px;
+  }
+}
+
+.notices {
+  padding: 10px 6px;
+  min-height: 43px;
+
+  .success {
+    padding: 10px;
+    background: lighten($success, 15%);
+    color: #333;
+    border-radius: 5px;
+    font-size: 1.6em;
   }
 }

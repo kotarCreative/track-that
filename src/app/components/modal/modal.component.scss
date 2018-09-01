@@ -1,0 +1,69 @@
+.modal {
+  &__mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    transition: opacity .3s ease;
+    overflow-y: scroll;
+  }
+
+  &__wrapper {
+    width: 100%;
+  }
+
+  &__content {
+    margin: 0px auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 50%;
+    background-color: #fff;
+    transition: all 0.5s ease;
+
+    &.lg {
+      width: 70%;
+    }
+
+    &.md {
+      width: 50%;
+    }
+
+    &.sm {
+      width: 25%;
+    }
+  }
+
+  &__header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+
+    .title {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        padding: 0px;
+        margin: 0px;
+      }
+    }
+
+    .close-btn {
+      margin-left: auto;
+      font-size: 20px;
+      line-height: 22px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+
+  &__body {
+    padding: 20px;
+    padding-top: 0px;
+  }
+}
