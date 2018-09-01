@@ -1,0 +1,26 @@
+$text-color: #fff;
+
+:host(.timecard) {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  padding: 4px 8px;
+  border-radius: 5px;
+  align-items: center;
+  background: grey;
+  width: max-content;
+}
+
+.timecard {
+  &__clock {
+    flex-shrink: 1;
+    color: $text-color;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__time {
+    color: $text-color;
+  }
+}
