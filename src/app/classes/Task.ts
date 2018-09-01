@@ -3,12 +3,14 @@ export default class Task {
   public name;
   public description;
   public status;
+  public order;
 
-  constructor(id: number, name: string, description: string, status: string) {
+  constructor(id: number, name: string, description: string, status: string, order: number) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.status = status;
+    this.order = order;
   }
 
   validate() {

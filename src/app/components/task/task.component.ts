@@ -9,9 +9,6 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 export class TaskComponent {
   name = 'task';
 
-  // Define class on core component
-  @HostBinding('class.task') true;
-
   // Props
   @Input() task = {
     id: -1,

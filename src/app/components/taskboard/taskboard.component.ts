@@ -12,17 +12,22 @@ export class TaskBoardComponent {
   // Define class on core component
   @HostBinding('class.task-board') true;
 
+  // Data
+  connectedLists = ['in-progress', 'planned', 'complete'];
+
   // Props
   @Input() status;
   @Input() tasks = [];
 
   // Events
   @Output() addTask = new EventEmitter<string>();
+  @Output() changeTaskStatus = new EventEmitter<object>();
   @Output() removeTask = new EventEmitter<object>();
+  @Output() reorderTask = new EventEmitter<object>();
 
   // Computed Properties
   get estimatedTime() {
-    return this.tasks.reduce((count, t) => count + t.estimatedTime, 0) || 0;
+    return this.filteredTasks.reduce((count, t) => count + t.estimatedTime, 0) || 0;
   }
 
   get filteredTasks() {
@@ -44,6 +49,14 @@ export class TaskBoardComponent {
   // Methods
   handleAddTask() {
     this.addTask.emit(this.status);
+  }
+
+  handleDrop(event) {
+    if (event.item.data.status !== this.status) {
+      this.changeTaskStatus.emit({ event: event, status: this.status });
+    } else {
+      this.reorderTask.emit(event);
+    }
   }
 
   handleRemoveTask(task) {

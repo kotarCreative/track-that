@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,7 @@ import { TimeCardComponent } from './components/timecard/timecard.component';
   imports: [
     BrowserModule,
     CommonModule,
+    DragDropModule,
     FormsModule
   ],
   providers: [],
