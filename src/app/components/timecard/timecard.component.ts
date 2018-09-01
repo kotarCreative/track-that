@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'time-card',
@@ -7,6 +7,9 @@ import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 })
 
 export class TimeCardComponent {
-  @Input() time = 0;
+  // Define class on core component
   @HostBinding('class.timecard') true;
+
+  // Props
+  @Input() time = 0;
 }

@@ -1,0 +1,25 @@
+$bg-color: #DA7E3B;
+$red: #E35656;
+.btn {
+  text-decoration: none;
+  outline: none;
+  padding: 8px 12px;
+  font-size: 1.2em;
+  background: $bg-color;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  letter-spacing: 1px;
+
+  &:focus, &:active {
+    outline: none;
+  }
+
+  &:hover, &:active {
+    background: darken($bg-color, 5%);
+  }
+
+  &.remove {
+    background: $red;
+  }
+}

@@ -11,13 +11,17 @@ $task-bg-color: #fff;
 }
 
 .task {
-  &__info-bar {
-    margin-bottom: 5px;
-  }
-
   &__description {
+    margin: 10px 0px;
+    word-wrap: break-word;
     width: 100%;
     border: none;
     resize: none;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 }

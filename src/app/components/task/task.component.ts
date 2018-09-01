@@ -7,11 +7,18 @@ import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 })
 
 export class TaskComponent {
+  // Define class on core component
+  @HostBinding('class.task') true;
+
+  // Props
   @Input() task = {
     name: 'New Task',
     estimatedTime: 0,
     description: 'This is a task that needs to be done.'
   };
 
-  @HostBinding('class.task') true;
+  // Methods
+  confirmTaskRemoval() {
+    console.log('Task Removed');
+  }
 }
