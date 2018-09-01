@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'btn',
@@ -7,6 +7,8 @@ import { Component, HostBinding, Input } from '@angular/core';
 })
 
 export class BtnComponent {
+  name = 'btn';
+
   // Props
   @Input() label = 'Click Here';
   @Input() additionalClasses = '';

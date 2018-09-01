@@ -1,5 +1,7 @@
 $bg-color: #DA7E3B;
-$red: #E35656;
+$success: #73C85E;
+$warning: #E35656;
+
 .btn {
   text-decoration: none;
   outline: none;
@@ -19,7 +21,11 @@ $red: #E35656;
     background: darken($bg-color, 5%);
   }
 
+  &.add {
+    background: $success;
+  }
+
   &.remove {
-    background: $red;
+    background: $warning;
   }
 }

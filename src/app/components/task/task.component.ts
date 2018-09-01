@@ -7,6 +7,8 @@ import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 })
 
 export class TaskComponent {
+  name = 'task';
+
   // Define class on core component
   @HostBinding('class.task') true;
 

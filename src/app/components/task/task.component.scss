@@ -5,9 +5,13 @@ $task-bg-color: #fff;
   display: block;
   background: $task-bg-color;
   padding: 10px;
-  padding-top: 0px;
+  padding-top: 1px;
   border-radius: $border-radius;
-  border: solid thin #333;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
 }
 
 .task {

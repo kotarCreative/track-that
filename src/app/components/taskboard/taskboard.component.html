@@ -1,0 +1,10 @@
+<div class="task-board__header">
+  <h3>{{ title }}</h3>
+  <time-card [time]="estimatedTime"></time-card>
+</div>
+<div class="task-board__tasks">
+  <task *ngFor="let task of tasks" [task]="task"></task>
+</div>
+<div class="task-board__actions">
+  <btn label="Add Card" action="addTask" additionalClasses="add"></btn>
+</div>
