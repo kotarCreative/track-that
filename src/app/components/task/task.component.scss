@@ -1,0 +1,23 @@
+$border-radius: 5px;
+$task-bg-color: #fff;
+
+:host(.task) {
+  display: block;
+  background: $task-bg-color;
+  padding: 10px;
+  padding-top: 0px;
+  border-radius: $border-radius;
+  border: solid thin #333;
+}
+
+.task {
+  &__info-bar {
+    margin-bottom: 5px;
+  }
+
+  &__description {
+    width: 100%;
+    border: none;
+    resize: none;
+  }
+}
