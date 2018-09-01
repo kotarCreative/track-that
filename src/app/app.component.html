@@ -5,14 +5,27 @@
   <div *ngIf="successMessage" class="success" (click)="successMessage = null">{{ successMessage }}</div>
 </div>
 <div class="track-that__boards">
-  <task-board title="Planned" [tasks]="plannedTasks" (removeTask)="handleRemoveTask($event)"></task-board>
-  <task-board title="In Progress" [tasks]="inProgressTasks" (removeTask)="handleRemoveTask($event)"></task-board>
-  <task-board title="Completed" [tasks]="completedTasks" (removeTask)="handleRemoveTask($event)"></task-board>
+  <task-board *ngFor="let status of ['in-progress', 'planned', 'complete']"
+              [status]="status"
+              [tasks]="tasks"
+              (addTask)="handleAddTask($event)"
+              (removeTask)="handleRemoveTask($event)">
+  </task-board>
 </div>
+
+<!-- Remove Task Modal -->
 <modal [show]="showRemoveTaskModal" (close)="cancelRemoveTask($event)" maxWidth="400px">
   <h4 class="text-centered mt-0">Are you sure you want to delete this task?</h4>
   <div class="modal__actions centered">
     <btn label="Yes" additionalClasses="add big" (click)="removeTask($event)"></btn>
     <btn label="No" additionalClasses="remove big" (click)="cancelRemoveTask($event)"></btn>
+  </div>
+</modal>
+
+<!-- Add Task Modal -->
+<modal [show]="showAddTaskModal" (close)="cancelAddTask($event)">
+
+  <div class="modal__actions">
+    <btn label="Create" additionalClasses="add" (click)="addTask($event)"></btn>
   </div>
 </modal>

@@ -13,23 +13,40 @@ export class TaskBoardComponent {
   @HostBinding('class.task-board') true;
 
   // Props
+  @Input() status;
   @Input() tasks = [];
-  @Input() title;
 
   // Events
-  @Output() removeTask = new EventEmitter<number>();
+  @Output() addTask = new EventEmitter<string>();
+  @Output() removeTask = new EventEmitter<object>();
 
   // Computed Properties
   get estimatedTime() {
     return this.tasks.reduce((count, t) => count + t.estimatedTime, 0);
   }
 
-  // Methods
-  addTask() {
-    console.log('Add Task');
+  get filteredTasks() {
+    return this.tasks.filter(t => t.status === this.status);
   }
 
-  handleRemoveTask(id) {
-    this.removeTask.emit(id);
+  get title() {
+    const str = this.status.toLowerCase().split('-');
+
+    for (let i = 0; i < str.length; i++) {
+        str[i] = str[i].split('');
+        str[i][0] = str[i][0].toUpperCase();
+        str[i] = str[i].join('');
+    }
+
+    return str.join(' ');
+  }
+
+  // Methods
+  handleAddTask() {
+    this.addTask.emit(this.status);
+  }
+
+  handleRemoveTask(task) {
+    this.removeTask.emit(task);
   }
 }

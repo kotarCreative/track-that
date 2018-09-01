@@ -21,10 +21,10 @@ export class TaskComponent {
   };
 
   // Events
-  @Output() removeTask = new EventEmitter<number>();
+  @Output() removeTask = new EventEmitter<object>();
 
   // Methods
   handleRemoveTask() {
-    this.removeTask.emit(this.task.id);
+    this.removeTask.emit(this.task);
   }
 }

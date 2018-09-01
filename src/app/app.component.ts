@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Task from './classes/Task';
 import dummyData from './dummyData';
 
 @Component({
@@ -10,39 +11,40 @@ export class AppComponent {
   title = 'trackthat';
 
   // Data
-  activeTaskID = -1;
+  activeTask: Task;
+  showAddTaskModal = false;
   showRemoveTaskModal = false;
   successMessage: string;
-  tasks = dummyData.tasks;
-
-  // Computed Properties
-  get completedTasks() {
-    return this.filterStatuses('completed');
-  }
-  get inProgressTasks() {
-    return this.filterStatuses('in-progress');
-  }
-  get plannedTasks() {
-    return this.filterStatuses('planned');
-  }
+  tasks: Task[] = [];
 
   // Methods
+  addTask() {
+    this.tasks.push(this.activeTask);
+    this.resetActiveTask();
+  }
+
+  cancelAddTask() {
+    this.resetActiveTask();
+    this.showAddTaskModal = false;
+  }
+
   cancelRemoveTask() {
-    this.activeTaskID = -1;
+    this.activeTask.id = -1;
     this.showRemoveTaskModal = false;
   }
 
-  filterStatuses(status) {
-    return this.tasks.filter(t => t.status === status);
+  handleAddTask(status) {
+    this.activeTask = new Task(this.tasks.length, '', '', status);
+    this.showAddTaskModal = true;
   }
 
-  handleRemoveTask(id) {
-    this.activeTaskID = id;
+  handleRemoveTask(task) {
+    this.activeTask = task;
     this.showRemoveTaskModal = true;
   }
 
   removeTask() {
-    this.tasks = this.tasks.filter(t => t.id !== this.activeTaskID);
+    this.tasks = this.tasks.filter(t => t.id !== this.activeTask.id);
     this.showRemoveTaskModal = false;
     this.successMessage = 'Task successfully removed.';
 
@@ -50,5 +52,9 @@ export class AppComponent {
     setTimeout(_ => {
       this.successMessage = null;
     }, 5000);
+  }
+
+  resetActiveTask() {
+    this.activeTask = null;
   }
 }
