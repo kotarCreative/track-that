@@ -1,0 +1,20 @@
+.track-that {
+  &__banner {
+    text-align: center;
+    background: #DA7E3B;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 40px;
+
+    h1 {
+      margin: 0px;
+    }
+  }
+
+  &__boards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    align-items: flex-start;
+  }
+}

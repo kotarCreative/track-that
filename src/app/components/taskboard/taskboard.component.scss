@@ -7,6 +7,9 @@ $border-radius: 10px;
   padding-top: 1px;
   display: block;
   border-radius: $border-radius;
+  max-width: 32%;
+  width: 32%;
+  margin: 0px 5px;
 
   .timecard {
     margin-left: auto;

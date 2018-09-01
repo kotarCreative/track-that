@@ -8,5 +8,23 @@ import dummyData from './dummyData';
 })
 export class AppComponent {
   title = 'trackthat';
-  tasks = dummyData.tasks;
+
+  // Data
+  tasks = dummyData;
+
+  // Computed Properties
+  get completedTasks() {
+    return this.filterStatuses('completed');
+  }
+  get inProgressTasks() {
+    return this.filterStatuses('in-progress');
+  }
+  get plannedTasks() {
+    return this.filterStatuses('planned');
+  }
+
+  // Methods
+  filterStatuses(status) {
+    return this.tasks.tasks.filter(t => t.status === status);
+  }
 }

@@ -13,12 +13,17 @@ export class TaskBoardComponent implements OnInit {
   @HostBinding('class.task-board') true;
 
   // Props
-  @Input() estimatedTime = 0;
   @Input() tasks = [];
   @Input() title;
 
   // Mounted
   ngOnInit() {
+  }
+
+  // Computed Properties
+  get estimatedTime() {
+    console.log(this.tasks.reduce((t, count) => count + t.estimatedTime, 0));
+    return this.tasks.reduce((count, t) => count + t.estimatedTime, 0);
   }
 
   // Methods
