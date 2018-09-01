@@ -3,7 +3,7 @@
   <time-card [time]="estimatedTime"></time-card>
 </div>
 <div class="task-board__tasks">
-  <task *ngFor="let task of tasks" [task]="task"></task>
+  <task *ngFor="let task of tasks" [task]="task" (removeTask)="handleRemoveTask($event)"></task>
 </div>
 <div class="task-board__actions">
   <btn label="Add Card" action="addTask" additionalClasses="add"></btn>

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'task',
@@ -14,13 +14,17 @@ export class TaskComponent {
 
   // Props
   @Input() task = {
+    id: -1,
     name: 'New Task',
     estimatedTime: 0,
     description: 'This is a task that needs to be done.'
   };
 
+  // Events
+  @Output() removeTask = new EventEmitter<number>();
+
   // Methods
-  confirmTaskRemoval() {
-    console.log('Task Removed');
+  handleRemoveTask() {
+    this.removeTask.emit(this.task.id);
   }
 }

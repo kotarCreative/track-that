@@ -2,7 +2,7 @@
   <h1>Track That</h1>
 </div>
 <div class="track-that__boards">
-  <task-board title="Planned" [tasks]="plannedTasks"></task-board>
-  <task-board title="In Progress" [tasks]="inProgressTasks"></task-board>
-  <task-board title="Completed" [tasks]="completedTasks"></task-board>
+  <task-board title="Planned" [tasks]="plannedTasks" (removeTask)="handleRemoveTask($event)"></task-board>
+  <task-board title="In Progress" [tasks]="inProgressTasks" (removeTask)="handleRemoveTask($event)"></task-board>
+  <task-board title="Completed" [tasks]="completedTasks" (removeTask)="handleRemoveTask($event)"></task-board>
 </div>

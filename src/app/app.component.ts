@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'trackthat';
 
   // Data
-  tasks = dummyData;
+  tasks = dummyData.tasks;
 
   // Computed Properties
   get completedTasks() {
@@ -25,6 +25,10 @@ export class AppComponent {
 
   // Methods
   filterStatuses(status) {
-    return this.tasks.tasks.filter(t => t.status === status);
+    return this.tasks.filter(t => t.status === status);
+  }
+
+  handleRemoveTask(id) {
+    this.tasks = this.tasks.filter(t => t.id !== id);
   }
 }

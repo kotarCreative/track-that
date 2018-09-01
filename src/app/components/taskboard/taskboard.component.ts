@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'task-board',
@@ -6,7 +6,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   styleUrls: ['./taskboard.component.scss']
 })
 
-export class TaskBoardComponent implements OnInit {
+export class TaskBoardComponent {
   name = 'taskBoard';
 
   // Define class on core component
@@ -16,18 +16,20 @@ export class TaskBoardComponent implements OnInit {
   @Input() tasks = [];
   @Input() title;
 
-  // Mounted
-  ngOnInit() {
-  }
+  // Events
+  @Output() removeTask = new EventEmitter<number>();
 
   // Computed Properties
   get estimatedTime() {
-    console.log(this.tasks.reduce((t, count) => count + t.estimatedTime, 0));
     return this.tasks.reduce((count, t) => count + t.estimatedTime, 0);
   }
 
   // Methods
   addTask() {
     console.log('Add Task');
+  }
+
+  handleRemoveTask(id) {
+    this.removeTask.emit(id);
   }
 }
