@@ -11,7 +11,8 @@ export class AppComponent {
   title = 'trackthat';
 
   // Data
-  activeTask: Task;
+  activeTask: Task = new Task(-1, '', '', 'in-progress');
+  errorMessage: string;
   showAddTaskModal = false;
   showRemoveTaskModal = false;
   successMessage: string;
@@ -19,8 +20,13 @@ export class AppComponent {
 
   // Methods
   addTask() {
+    if (!this.activeTask.validate()) {
+      this.errorMessage = 'All fields must be filled out.';
+      return;
+    }
     this.tasks.push(this.activeTask);
-    this.resetActiveTask();
+    this.cancelAddTask();
+    this.showNotification('Task successfully added.');
   }
 
   cancelAddTask() {
@@ -46,15 +52,19 @@ export class AppComponent {
   removeTask() {
     this.tasks = this.tasks.filter(t => t.id !== this.activeTask.id);
     this.showRemoveTaskModal = false;
-    this.successMessage = 'Task successfully removed.';
+    this.showNotification('Task successfully removed.');
+  }
+
+  resetActiveTask() {
+    this.activeTask = new Task(-1, '', '', 'in-progress');
+  }
+
+  showNotification(message) {
+    this.successMessage = message;
 
     // Remove success message after a period of time.
     setTimeout(_ => {
       this.successMessage = null;
     }, 5000);
-  }
-
-  resetActiveTask() {
-    this.activeTask = null;
   }
 }

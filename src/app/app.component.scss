@@ -1,3 +1,4 @@
+$danger: #E35656;
 $success: #73C85E;
 
 .track-that {
@@ -6,6 +7,9 @@ $success: #73C85E;
     background: #DA7E3B;
     color: #fff;
     padding: 10px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
 
     h1 {
       margin: 0px;
@@ -31,15 +35,26 @@ $success: #73C85E;
   btn {
     margin-left: 5px;
   }
+
+  input[name="est-time"] {
+    margin-right: auto;
+  }
 }
 
 .notices {
-  padding: 10px 6px;
-  min-height: 43px;
+  margin: 5px 0px;
 
   .success {
     padding: 10px;
     background: lighten($success, 15%);
+    color: #333;
+    border-radius: 5px;
+    font-size: 1.6em;
+  }
+
+  .danger {
+    padding: 10px;
+    background: lighten($danger, 15%);
     color: #333;
     border-radius: 5px;
     font-size: 1.6em;

@@ -10,4 +10,12 @@ export default class Task {
     this.description = description;
     this.status = status;
   }
+
+  validate() {
+    return !Object.keys(this).some(k => {
+      if (this[k] === null || this[k] === '') {
+        return true;
+      }
+    });
+  }
 }

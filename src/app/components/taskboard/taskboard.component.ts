@@ -22,7 +22,7 @@ export class TaskBoardComponent {
 
   // Computed Properties
   get estimatedTime() {
-    return this.tasks.reduce((count, t) => count + t.estimatedTime, 0);
+    return this.tasks.reduce((count, t) => count + t.estimatedTime, 0) || 0;
   }
 
   get filteredTasks() {

@@ -1,0 +1,28 @@
+.form-control {
+  font-family: $font-family;
+  font-size: $base-font-size;
+  border: none;
+  background: none;
+  color: $text-color;
+  padding: 5px 0px;
+  border-radius: 5px;
+  transition: padding 0.2s ease-in;
+
+  &:focus, &:active, &:hover {
+    outline: none;
+    background: #eeeeeeee;
+    padding: 5px;
+  }
+}
+
+textarea {
+  font-family: $font-family;
+  font-size: 1.2em;
+  width: 100%;
+  resize: none;
+  height: 100px;
+
+  &:focus {
+    height: 150px;
+  }
+}

@@ -1,3 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0px;
+}
+
 .mt-0 {
-  margin-top: 0px;
+  margin-top: 0px !important;
+}
+
+.mt--20 {
+  margin-top: -20px !important;
+}
+
+.ph-6 {
+  padding-left: 6px;
+  padding-right: 6px;
 }

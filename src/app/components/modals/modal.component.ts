@@ -37,7 +37,7 @@ export class ModalComponent {
   @Output() close = new EventEmitter<any>();
 
   // Methods
-  handleClose() {
+  handleClose(e) {
     this.close.emit();
   }
 }
