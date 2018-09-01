@@ -12,6 +12,10 @@ $task-bg-color: #fff;
   &:last-child {
     margin-bottom: 0px;
   }
+
+  .timecard {
+    margin-right: auto;
+  }
 }
 
 .task {
@@ -23,7 +27,7 @@ $task-bg-color: #fff;
     resize: none;
   }
 
-  &__actions {
+  &__footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;

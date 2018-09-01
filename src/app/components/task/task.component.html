@@ -1,8 +1,6 @@
 <h4>{{ task.name }}</h4>
-<div class="task__info-bar">
-  <time-card [time]="task.estimatedTime"></time-card>
-</div>
 <textarea class="task__description" disabled>{{ task.description }}</textarea>
-<div class="task__actions">
+<div class="task__footer">
+  <time-card [time]="task.estimatedTime"></time-card>
   <btn label="REMOVE" additionalClasses="remove" (click)="handleRemoveTask()"></btn>
 </div>
