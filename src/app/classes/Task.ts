@@ -2,13 +2,15 @@ export default class Task {
   public id;
   public name;
   public description;
+  public estimatedTime;
   public status;
   public order;
 
-  constructor(id: number, name: string, description: string, status: string, order: number) {
+  constructor(id: number, name: string, description: string, time: number, status: string, order: number) {
     this.id = id;
     this.name = name;
     this.description = description;
+    this.estimatedTime = time;
     this.status = status;
     this.order = order;
   }

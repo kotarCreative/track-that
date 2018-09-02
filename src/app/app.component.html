@@ -7,16 +7,16 @@
 </div>
 
 <!-- Remove Task Modal -->
-<modal [show]="showRemoveTaskModal" (close)="cancelRemoveTask($event)" maxWidth="400px">
+<modal [show]="showRemoveTaskModal" (close)="cancelRemoveTask()" maxWidth="400px">
   <h4 class="text-centered mt-0">Are you sure you want to delete this task?</h4>
   <div class="modal__actions centered">
-    <btn label="Yes" additionalClasses="add big" (click)="removeTask($event)"></btn>
-    <btn label="No" additionalClasses="remove big" (click)="cancelRemoveTask($event)"></btn>
+    <btn label="Yes" additionalClasses="add big" (click)="removeTask()"></btn>
+    <btn label="No" additionalClasses="remove big" (click)="cancelRemoveTask()"></btn>
   </div>
 </modal>
 
 <!-- Add Task Modal -->
-<modal [show]="showAddTaskModal" (close)="cancelAddTask($event)">
+<modal [show]="showAddTaskModal" (close)="cancelAddTask()">
   <input class="form-control lg-text" name="name" title [(ngModel)]="activeTask.name" ngDefaultControl placeholder="Name..." />
 
   <div *ngIf="errorMessage" class="notices mt--20">
@@ -26,7 +26,7 @@
   </textarea>
   <div class="modal__actions">
     <input class="form-control lg-text" name="est-time" type="number" [(ngModel)]="activeTask.estimatedTime" ngDefaultControl placeholder="Est. Time..." />
-    <btn label="Create" additionalClasses="add" (click)="addTask($event)"></btn>
+    <btn label="Create" additionalClasses="add" (click)="addTask()"></btn>
   </div>
 </modal>
 
