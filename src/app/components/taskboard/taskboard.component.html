@@ -3,7 +3,17 @@
   <time-card [time]="estimatedTime"></time-card>
 </div>
 <cdk-drop [id]="status" class="task-board__tasks" (dropped)="handleDrop($event)" [connectedTo]="connectedLists">
-  <task *ngFor="let task of tasks" [task]="task" (removeTask)="handleRemoveTask($event)" cdkDrag [cdkDragData]="task"></task>
+  <div *ngFor="let task of tasks" class="task" cdkDrag [cdkDragData]="task">
+    <div cdkDragHandle>
+  <h4>{{ task.name }}</h4>
+  <textarea class="task__description" disabled>{{ task.description }}</textarea>
+    </div>
+  <div class="task__footer">
+    <time-card [time]="task.estimatedTime"></time-card>
+    <btn label="REMOVE" additionalClasses="remove" (click)="handleRemoveTask(task)"></btn>
+  </div>
+</div>
+  <!--<task *ngFor="let task of tasks" [task]="task" (removeTask)="handleRemoveTask($event)" cdkDrag [cdkDragData]="task"></task>-->
 </cdk-drop>
 <div class="task-board__actions">
   <btn label="Add Card" (click)="handleAddTask()" additionalClasses="add"></btn>

@@ -73,7 +73,7 @@ export class AppComponent implements AfterContentInit {
   }
 
   handleAddTask(status) {
-    this.activeTask = new Task(this.tasks.length, '', '', 0, status, this.tasks.length);
+    this.activeTask = new Task(this.tasks.length, '', '', null, status, this.tasks.length);
     this.showAddTaskModal = true;
   }
 
@@ -129,7 +129,7 @@ export class AppComponent implements AfterContentInit {
   }
 
   resetActiveTask() {
-    this.activeTask = new Task(-1, '', '', 0, 'in-progress', -1);
+    this.activeTask = new Task(-1, '', '', null, 'in-progress', -1);
   }
 
   save() {

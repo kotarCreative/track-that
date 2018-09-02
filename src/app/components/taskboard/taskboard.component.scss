@@ -1,5 +1,7 @@
 $bg-color: #EFEFEF;
 $border-radius: 10px;
+$task-border-radius: 5px;
+$task-bg-color: #fff;
 
 :host(.task-board) {
   background: $bg-color;
@@ -10,16 +12,16 @@ $border-radius: 10px;
   max-width: 32%;
   width: 32%;
   margin: 0px 5px;
-
-  .timecard {
-    margin-left: auto;
-  }
 }
 
 .task-board {
   &__header {
     display: flex;
     align-items: center;
+
+    .timecard {
+      margin-left: auto;
+    }
   }
 
   &__tasks {
@@ -41,5 +43,37 @@ $border-radius: 10px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+  }
+}
+
+.task {
+  display: block;
+  background: $task-bg-color;
+  padding: 10px;
+  padding-top: 1px;
+  border-radius: $task-border-radius;
+
+  &__description {
+    margin: 10px 0px;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+    resize: none;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .timecard {
+      margin-right: auto;
+    }
+  }
+
+  &:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0 3px 14px 2px rgba(0, 0, 0, 0.12);
   }
 }
