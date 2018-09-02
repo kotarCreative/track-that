@@ -55,7 +55,7 @@ export class TaskBoardComponent {
     if (event.item.data.status !== this.status) {
       this.changeTaskStatus.emit({ event: event, status: this.status });
     } else {
-      this.reorderTask.emit(event);
+      this.reorderTask.emit({ id: event.item.data.id, order: event.currentIndex });
     }
   }
 

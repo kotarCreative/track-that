@@ -2,7 +2,7 @@
   <div *ngIf="successMessage" class="success" (click)="successMessage = null">{{ successMessage }}</div>
 </div>
 <div class="track-that__boards">
-  <task-board *ngFor="let status of ['planned', 'in-progress', 'complete']" [status]="status" [tasks]="tasks" (addTask)="handleAddTask($event)" (removeTask)="handleRemoveTask($event)" (changeTaskStatus)="changeTaskStatus($event)" (reorderTask)="reorderTask($event)">
+  <task-board *ngFor="let status of ['planned', 'in-progress', 'complete']" [status]="status" [tasks]="getTasks(status)" (addTask)="handleAddTask($event)" (removeTask)="handleRemoveTask($event)" (changeTaskStatus)="changeTaskStatus($event)" (reorderTask)="reorderTask($event)">
   </task-board>
 </div>
 

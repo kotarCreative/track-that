@@ -3,7 +3,7 @@
   <time-card [time]="estimatedTime"></time-card>
 </div>
 <cdk-drop [id]="status" class="task-board__tasks" (dropped)="handleDrop($event)" [connectedTo]="connectedLists">
-  <task *ngFor="let task of filteredTasks" [task]="task" (removeTask)="handleRemoveTask($event)" cdkDrag [cdkDragData]="task"></task>
+  <task *ngFor="let task of tasks" [task]="task" (removeTask)="handleRemoveTask($event)" cdkDrag [cdkDragData]="task"></task>
 </cdk-drop>
 <div class="task-board__actions">
   <btn label="Add Card" (click)="handleAddTask()" additionalClasses="add"></btn>

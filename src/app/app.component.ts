@@ -1,5 +1,5 @@
 import { Component, AfterContentInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 import Task from './classes/Task';
 import dummyData from './dummyData';
 
@@ -19,6 +19,19 @@ export class AppComponent implements AfterContentInit {
   successMessage: string;
   tasks: Task[] = [];
 
+  // Computed Properties
+  get completeTasks() {
+    return this.tasks.filter(t => t.status === 'complete');
+  }
+
+  get inProgressTasks() {
+    return this.tasks.filter(t => t.status === 'in-progress');
+  }
+
+  get plannedTasks() {
+    return this.tasks.filter(t => t.status === 'planned');
+  }
+
   // Mounted
   ngAfterContentInit() {
     if (window.localStorage.getItem('trackThatTasks')) {
@@ -35,9 +48,9 @@ export class AppComponent implements AfterContentInit {
       return;
     }
     this.tasks.push(this.activeTask);
-    window.localStorage.setItem('trackThatTasks', JSON.stringify(this.tasks));
     this.cancelAddTask();
     this.showNotification('Task successfully added.');
+    this.save();
   }
 
   cancelAddTask() {
@@ -55,6 +68,7 @@ export class AppComponent implements AfterContentInit {
 
     if (task) {
       task.status = status;
+      this.reorderTask({ id: event.item.data.id, order: event.currentIndex });
     }
   }
 
@@ -68,18 +82,58 @@ export class AppComponent implements AfterContentInit {
     this.showRemoveTaskModal = true;
   }
 
+  getTasks(status) {
+    let taskKey = status.toLowerCase().split('-');
+    for (let i = 1; i < taskKey.length; i++) {
+        taskKey[i] = taskKey[i].split('');
+        taskKey[i][0] = taskKey[i][0].toUpperCase();
+        taskKey[i] = taskKey[i].join('');
+    }
+
+    taskKey = taskKey.join('') + 'Tasks';
+    return this[taskKey].sort((a, b) => a.order > b.order);
+  }
+
   removeTask() {
     this.tasks = this.tasks.filter(t => t.id !== this.activeTask.id);
     this.showRemoveTaskModal = false;
     this.showNotification('Task successfully removed.');
+    this.save();
   }
 
-  reorderTask(event) {
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+  reorderTask({ id, order }) {
+    const task = this.tasks.find(t => t.id === id);
+
+    // Moving down the list
+    if (order > task.order) {
+      for (let i = task.order; i > order; i--) {
+        if (this.tasks[i]) {
+          this.tasks[i].order--;
+        }
+      }
+
+    // Moving up the list
+    } else if (order < task.order) {
+      for (let i = order; i < task.order; i++) {
+        if (this.tasks[i]) {
+          this.tasks[i].order++;
+        }
+      }
+    }
+
+    if (task) {
+      task.order = order;
+    }
+
+    this.save();
   }
 
   resetActiveTask() {
     this.activeTask = new Task(-1, '', '', 'in-progress', -1);
+  }
+
+  save() {
+    window.localStorage.setItem('trackThatTasks', JSON.stringify(this.tasks));
   }
 
   showNotification(message) {

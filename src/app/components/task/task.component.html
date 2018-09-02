@@ -3,6 +3,6 @@
   <textarea class="task__description" disabled>{{ task.description }}</textarea>
   <div class="task__footer">
     <time-card [time]="task.estimatedTime"></time-card>
-    <btn label="REMOVE" additionalClasses="remove" (click)="handleRemoveTask()"></btn>
+    <btn label="REMOVE" additionalClasses="remove" (click)="handleRemoveTask($event)"></btn>
   </div>
 </div>

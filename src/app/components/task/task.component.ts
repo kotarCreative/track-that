@@ -21,7 +21,8 @@ export class TaskComponent {
   @Output() removeTask = new EventEmitter<object>();
 
   // Methods
-  handleRemoveTask() {
+  handleRemoveTask(e) {
+    e.stopPropagation();
     this.removeTask.emit(this.task);
   }
 }
