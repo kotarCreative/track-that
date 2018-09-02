@@ -106,7 +106,7 @@ export class AppComponent implements AfterContentInit {
 
     // Moving down the list
     if (order > task.order) {
-      for (let i = task.order; i > order; i--) {
+      for (let i = task.order; i >= order; i--) {
         if (this.tasks[i]) {
           this.tasks[i].order--;
         }
@@ -114,7 +114,7 @@ export class AppComponent implements AfterContentInit {
 
     // Moving up the list
     } else if (order < task.order) {
-      for (let i = order; i < task.order; i++) {
+      for (let i = order; i <= task.order; i++) {
         if (this.tasks[i]) {
           this.tasks[i].order++;
         }
