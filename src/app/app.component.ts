@@ -1,7 +1,6 @@
 import { Component, AfterContentInit } from '@angular/core';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import Task from './classes/Task';
-import dummyData from './dummyData';
 
 @Component({
   selector: 'app-root',
