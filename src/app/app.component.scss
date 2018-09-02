@@ -60,3 +60,15 @@ $success: #73C85E;
     font-size: 1.6em;
   }
 }
+
+@media screen and (max-width: 956px) {
+  .track-that__boards {
+    flex-flow: column;
+
+    .task-board {
+      max-width: 98%;
+      width: 98%;
+      margin-bottom: 20px;
+    }
+  }
+}

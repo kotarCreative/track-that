@@ -68,3 +68,10 @@
     padding: 20px;
   }
 }
+
+@media screen and (max-width: 956px) {
+  .modal__content {
+      width: 100% !important;
+      margin-top: 0px;
+  }
+}
