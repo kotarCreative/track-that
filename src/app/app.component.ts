@@ -102,27 +102,28 @@ export class AppComponent implements AfterContentInit {
   }
 
   reorderTask({ id, order }) {
-    const task = this.tasks.find(t => t.id === id);
+    const task = this.tasks.find(t => t.id === id),
+          idx = this.tasks.findIndex(t => t.id === id);
+
+    if (task) {
+      task.order = order;
+    }
 
     // Moving down the list
-    if (order > task.order) {
-      for (let i = task.order; i >= order; i--) {
+    if (order > idx) {
+      for (let i = order; i > idx; i--) {
         if (this.tasks[i]) {
           this.tasks[i].order--;
         }
       }
 
     // Moving up the list
-    } else if (order < task.order) {
-      for (let i = order; i <= task.order; i++) {
+    } else if (order < idx) {
+      for (let i = order; i < idx; i++) {
         if (this.tasks[i]) {
           this.tasks[i].order++;
         }
       }
-    }
-
-    if (task) {
-      task.order = order;
     }
 
     this.save();
