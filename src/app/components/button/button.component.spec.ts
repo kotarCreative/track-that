@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 
-import { BtnComponent } from '../button/button.component';
+import { BtnComponent } from './button.component';
 
 describe('BtnComponent', () => {
   let component: BtnComponent;
@@ -24,7 +24,7 @@ describe('BtnComponent', () => {
     expect(component).toBeDefined();
   }));
 
-  // Test Component Title Rendering
+  // Test Component Label Rendering
   it(`should have the title 'Click Here' when initially rendered`, async(() => {
     expect(component.label).toEqual('Click Here');
   }));
@@ -33,12 +33,16 @@ describe('BtnComponent', () => {
     fixture.detectChanges();
     expect(component.label).toEqual('Test Btn');
   }));
+
+  // Test html label rendering
   it(`should render the new label`, async(() => {
     component.label = 'Test Btn';
     fixture.detectChanges();
     const BtnElement: HTMLElement = fixture.nativeElement;
     expect(BtnElement.textContent).toContain('Test Btn');
   }));
+
+  // Test additional classes being added
   it(`should have extra class 'test' added to it.`, async(() => {
     component.additionalClasses = 'test';
     fixture.detectChanges();
@@ -46,10 +50,3 @@ describe('BtnComponent', () => {
     expect(BtnElement.querySelector('button').classList.contains('test')).toBeTruthy();
   }));
 });
-
-// Snatched from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}

@@ -64,6 +64,8 @@ describe('TaskBoardComponent', () => {
     const TaskBoardElement: HTMLElement = fixture.nativeElement;
     expect(TaskBoardElement.textContent).toContain('In Progress');
   }));
+
+  // Test estimated time calculation
   it(`should calculate the estimated time for all tasks`, async(() => {
     expect(component.estimatedTime).toEqual(estimatedTime);
   }));
