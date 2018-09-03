@@ -58,4 +58,12 @@ export class TaskBoardComponent {
   handleRemoveTask(task) {
     this.removeTask.emit(task);
   }
+
+  toggleTimer(task) {
+    if (task.timerRunning) {
+      task.stopTimer();
+    } else {
+      task.startTimer();
+    }
+  }
 }

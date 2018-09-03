@@ -1,7 +1,7 @@
 $text-color: #fff;
 $bg-color: grey;
 
-:host(.timecard) {
+.timecard {
   display: flex;
   font-family: "Roboto", sans-serif;
   padding: 6px 8px;
@@ -9,9 +9,7 @@ $bg-color: grey;
   align-items: center;
   background: $bg-color;
   width: max-content;
-}
 
-.timecard {
   &__clock {
     flex-shrink: 1;
     fill: $text-color;
@@ -25,5 +23,9 @@ $bg-color: grey;
   &__time {
     color: $text-color;
     font-size: 14px;
+  }
+
+  &.active {
+    background: #DA7E3B;
   }
 }

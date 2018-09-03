@@ -37,13 +37,14 @@ export class AppComponent implements AfterContentInit, OnInit {
     if (typeof window.localStorage.getItem('trackThatIntro') !== 'undefined' && window.localStorage.getItem('trackThatIntro') === 'false') {
       this.showIntro = false;
     }
+    window.onbeforeunload = _ => { this.save(); };
   }
 
   // Mounted
   ngAfterContentInit() {
     if (window.localStorage.getItem('trackThatTasks')) {
       const tasks = JSON.parse(window.localStorage.getItem('trackThatTasks'));
-
+      console.log(tasks);
       tasks.forEach(t => {
         this.tasks.push(new Task(t.id, t.name, t.description, t.estimatedTime, t.actualTime, t.status, t.order));
       });
@@ -155,7 +156,11 @@ export class AppComponent implements AfterContentInit, OnInit {
   }
 
   save() {
-    window.localStorage.setItem('trackThatTasks', JSON.stringify(this.tasks));
+    if (this.tasks.length > 0) {
+      window.localStorage.setItem('trackThatTasks', JSON.stringify(this.tasks));
+    } else {
+      window.localStorage.removeItem('trackThatTasks');
+    }
   }
 
   showNotification(message) {

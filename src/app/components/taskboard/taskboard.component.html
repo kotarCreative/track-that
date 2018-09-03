@@ -9,11 +9,10 @@
       <textarea class="task__description" disabled>{{ task.description }}</textarea>
     </div>
     <div class="task__footer">
-      <time-card [time]="task.estimatedTime"></time-card>
+      <time-card [time]="task.timerRunning ? task.actualTime : task.estimatedTime" (click)="toggleTimer(task)" [timeType]="task.timerRunning ? 'actual' : 'estimated'"></time-card>
       <btn label="REMOVE" additionalClasses="remove" (click)="handleRemoveTask(task)"></btn>
     </div>
   </div>
-  <!--<task *ngFor="let task of tasks" [task]="task" (removeTask)="handleRemoveTask($event)" cdkDrag [cdkDragData]="task"></task>-->
 </cdk-drop>
 <div class="task-board__actions">
   <btn label="Add Card" (click)="handleAddTask()" additionalClasses="add"></btn>

@@ -8,8 +8,9 @@ import { Component, HostBinding, Input } from '@angular/core';
 
 export class TimeCardComponent {
   // Define class on core component
-  @HostBinding('class.timecard') true;
+  @HostBinding('class.timecard-wrapper') true;
 
   // Props
   @Input() time = 0;
+  @Input() timeType = 'estimated';
 }
