@@ -1,4 +1,4 @@
-import { Component, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit, OnInit } from '@angular/core';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import Task from './classes/Task';
 
@@ -7,13 +7,14 @@ import Task from './classes/Task';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterContentInit {
+export class AppComponent implements AfterContentInit, OnInit {
   title = 'trackthat';
 
   // Data
-  activeTask: Task = new Task(-1, '', '', 0, 'in-progress', -1);
+  activeTask: Task = new Task(-1, '', '', 0, 0, 'in-progress', -1);
   errorMessage: string;
   showAddTaskModal = false;
+  showIntro = true;
   showRemoveTaskModal = false;
   successMessage: string;
   tasks: Task[] = [];
@@ -31,10 +32,21 @@ export class AppComponent implements AfterContentInit {
     return this.tasks.filter(t => t.status === 'planned');
   }
 
+  // Created
+  ngOnInit() {
+    if (typeof window.localStorage.getItem('trackThatIntro') !== 'undefined' && window.localStorage.getItem('trackThatIntro') === 'false') {
+      this.showIntro = false;
+    }
+  }
+
   // Mounted
   ngAfterContentInit() {
     if (window.localStorage.getItem('trackThatTasks')) {
-      this.tasks = JSON.parse(window.localStorage.getItem('trackThatTasks'));
+      const tasks = JSON.parse(window.localStorage.getItem('trackThatTasks'));
+
+      tasks.forEach(t => {
+        this.tasks.push(new Task(t.id, t.name, t.description, t.estimatedTime, t.actualTime, t.status, t.order));
+      });
     } else {
       window.localStorage.setItem('trackThatTasks', '');
     }
@@ -72,8 +84,18 @@ export class AppComponent implements AfterContentInit {
   }
 
   handleAddTask(status) {
-    this.activeTask = new Task(this.tasks.length, '', '', null, status, this.tasks.length);
+    this.activeTask = new Task(this.tasks.length, '', '', null, null, status, this.tasks.length);
     this.showAddTaskModal = true;
+  }
+
+  handleCloseIntro() {
+    this.showIntro = false;
+    window.localStorage.setItem('trackThatIntro', 'false');
+  }
+
+  handleOpenIntro() {
+    this.showIntro = true;
+    window.localStorage.removeItem('trackThatIntro');
   }
 
   handleRemoveTask(task) {
@@ -129,7 +151,7 @@ export class AppComponent implements AfterContentInit {
   }
 
   resetActiveTask() {
-    this.activeTask = new Task(-1, '', '', null, 'in-progress', -1);
+    this.activeTask = new Task(-1, '', '', null, null, 'planned', -1);
   }
 
   save() {

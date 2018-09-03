@@ -1,3 +1,16 @@
+<div *ngIf="showIntro" class="track-that__introduction">
+  <div class="header">
+    <h1>Welcome to Track That.</h1>
+    <span class="close-btn" (click)="handleCloseIntro()">&times;</span>
+  </div>
+  <p>Track That is a simple app for tracking tasks that you need to complete. Stay on track by starting a timer to see how well your execution time matches your estimated time. You can start a timer on any task by clicking the estimated time button. If you want to see the actual time spent for an entire board of tasks simply click the estimated time for the board to toggle to the actual time spent. Tasks can be assigned to new boards by simply dragging them to the corresponding board.</p>
+</div>
+<div *ngIf="!showIntro" class="track-that__introduction">
+  <div class="header">
+    <h1>Welcome to Track That.</h1>
+    <span class="help-btn" (click)="handleOpenIntro()">Help</span>
+  </div>
+</div>
 <div class="notices ph-6">
   <div *ngIf="successMessage" class="success" (click)="successMessage = null">{{ successMessage }}</div>
 </div>
@@ -29,7 +42,3 @@
     <btn label="Create" additionalClasses="add" (click)="addTask()"></btn>
   </div>
 </modal>
-
-<div class="track-that__banner">
-  <h1>Track That</h1>
-</div>

@@ -2,6 +2,44 @@ $danger: #E35656;
 $success: #73C85E;
 
 .track-that {
+  &__introduction {
+    background: #EFEFEF;
+    padding: 1px 15px;
+    padding-bottom: 0.86em;
+    border-radius: 10px;
+    margin: 6px;
+
+    .header {
+      display: flex;
+
+      h1 {
+        margin: 0.5em 0em;
+      }
+
+      .close-btn {
+        margin-left: auto;
+        margin-top: 10px;
+        font-size: 20px;
+        line-height: 22px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .help-btn {
+        margin-left: auto;
+        margin-top: 10px;
+        font-size: 20px;
+        line-height: 22px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+    }
+
+    p {
+      margin: 0px;
+    }
+  }
+
   &__banner {
     text-align: center;
     background: #DA7E3B;
