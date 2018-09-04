@@ -3,7 +3,8 @@
   <time-card [time]="timeType === 'actual' ? actualTime : estimatedTime"
              [timeType]="timeType"
              (click)="toggleBoardTime()"
-             [showAnimation]="false"></time-card>
+             [showAnimation]="false"
+             class="clickable"></time-card>
 </div>
 <cdk-drop [id]="status" class="task-board__tasks" (dropped)="handleDrop($event)" [connectedTo]="connectedLists">
   <div *ngFor="let task of tasks" class="task" cdkDrag [cdkDragData]="task">

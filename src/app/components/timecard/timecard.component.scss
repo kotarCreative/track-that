@@ -1,5 +1,6 @@
 $text-color: #fff;
 $bg-color: grey;
+$active: #DA7E3B;
 
 .timecard {
   display: flex;
@@ -26,7 +27,7 @@ $bg-color: grey;
   }
 
   &.active {
-    background: #DA7E3B;
+    background: $active;
 
     &.with-animation {
       .timecard__clock #hours {
@@ -39,6 +40,24 @@ $bg-color: grey;
         transform-origin: 10.5331px 9.83558px;
         animation: spin 3s infinite;
         animation-timing-function: linear;
+      }
+    }
+  }
+
+  &.actual-time:not(.active) {
+    cursor: pointer;
+    border: solid thin $active;
+    padding: 5px 8px;
+
+    background: #fff;
+
+    .timecard__time {
+      color: $active;
+    }
+
+    svg {
+      circle, line {
+        stroke: $active;
       }
     }
   }
