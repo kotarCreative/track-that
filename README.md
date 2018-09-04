@@ -4,6 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This is an exploration of the Angular Framework. The app is a simple task tracker with drag and drop functionality.
 
+## Demo
+
+A demo can be found on github pages at `https://kotarcreative.github.io/track-that/`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
