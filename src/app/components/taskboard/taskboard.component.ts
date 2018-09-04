@@ -14,6 +14,7 @@ export class TaskBoardComponent {
 
   // Data
   connectedLists = ['in-progress', 'planned', 'complete'];
+  timeType = 'estimated';
 
   // Props
   @Input() status;
@@ -26,6 +27,10 @@ export class TaskBoardComponent {
   @Output() reorderTask = new EventEmitter<object>();
 
   // Computed Properties
+  get actualTime() {
+    return this.tasks.reduce((count, t) => count + t.actualTime, 0) || 0;
+  }
+
   get estimatedTime() {
     return this.tasks.reduce((count, t) => count + t.estimatedTime, 0) || 0;
   }
@@ -57,6 +62,14 @@ export class TaskBoardComponent {
 
   handleRemoveTask(task) {
     this.removeTask.emit(task);
+  }
+
+  toggleBoardTime() {
+    if (this.timeType === 'estimated') {
+      this.timeType = 'actual';
+    } else {
+      this.timeType = 'estimated';
+    }
   }
 
   toggleTimer(task) {

@@ -39,7 +39,7 @@ export default class Task {
       this.actualTime += 0.0166666666;
     };
 
-    this._timer = setInterval(addTime, 600);
+    this._timer = setInterval(addTime, 60000);
   }
 
   /**

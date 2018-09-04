@@ -7,6 +7,6 @@
     </svg>
   </div>
   <div class="timecard__time">
-    {{ timeType === 'actual' ? 'Actual Time:' : 'Est. Time:' }} {{ time.toFixed(2) }}h
+    {{ timeType === 'actual' ? 'Actual Time:' : 'Est. Time:' }} {{ formattedTime.split(':')[0] }}h {{ formattedTime.split(':')[1] }}m
   </div>
 </div>

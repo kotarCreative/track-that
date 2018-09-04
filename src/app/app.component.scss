@@ -27,7 +27,7 @@ $success: #73C85E;
 
       .help-btn {
         margin-left: auto;
-        margin-top: 10px;
+        margin-top: 1em;
         font-size: 20px;
         line-height: 22px;
         cursor: pointer;
@@ -60,8 +60,20 @@ $success: #73C85E;
     margin-left: 5px;
   }
 
-  input[name="est-time"] {
+  .input-wrapper {
     margin-right: auto;
+
+    label[for="est-time"] {
+      margin-right: 10px;
+    }
+
+    input[name="est-time-hh"] {
+      width: 35px;
+    }
+
+    input[name="est-time-mm"] {
+      width: 50px;
+    }
   }
 }
 

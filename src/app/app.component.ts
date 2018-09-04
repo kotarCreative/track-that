@@ -13,6 +13,8 @@ export class AppComponent implements AfterContentInit, OnInit {
   // Data
   activeTask: Task = new Task(-1, '', '', 0, 0, 'in-progress', -1);
   errorMessage: string;
+  estimatedTimeHours = null;
+  estimatedTimeMinutes = null;
   showAddTaskModal = false;
   showIntro = true;
   showRemoveTaskModal = false;
@@ -44,7 +46,6 @@ export class AppComponent implements AfterContentInit, OnInit {
   ngAfterContentInit() {
     if (window.localStorage.getItem('trackThatTasks')) {
       const tasks = JSON.parse(window.localStorage.getItem('trackThatTasks'));
-      console.log(tasks);
       tasks.forEach(t => {
         this.tasks.push(new Task(t.id, t.name, t.description, t.estimatedTime, t.actualTime, t.status, t.order));
       });
@@ -170,5 +171,32 @@ export class AppComponent implements AfterContentInit, OnInit {
     setTimeout(_ => {
       this.successMessage = null;
     }, 5000);
+  }
+
+  updateNewTaskEstimatedTime() {
+    this.activeTask.estimatedTime = Number(this.estimatedTimeHours) + (Number(this.estimatedTimeMinutes) / 60);
+  }
+
+  validateNewTaskEstimatedTime(event, type) {
+    const keyCode = event.which || event.keyCode,
+          otherKey = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey,
+          specialKeys = [ 8, 110, 190 ];
+
+    // Short circuit on tabs and backspaces.
+    if ([8, 9].includes(keyCode)) {
+      this['estimatedTime' + type] = event.target.value;
+      return;
+    }
+
+    if (!otherKey
+        && (this['estimatedTime' + type] === null || String(this['estimatedTime' + type]).length < 2)
+        && (keyCode >= 48 && keyCode <= 57)
+        && ((type === 'Hours' && event.target.value <= 24) || (type === 'Minutes' && event.target.value <= 60))) {
+        this['estimatedTime' + type] = event.target.value;
+        return;
+    } else {
+       event.preventDefault();
+      return;
+    }
   }
 }

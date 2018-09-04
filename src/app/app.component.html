@@ -38,7 +38,12 @@
   <textarea class="form-control" [(ngModel)]="activeTask.description" name="description" ngDefaultControl placeholder="Add a description...">
   </textarea>
   <div class="modal__actions">
-    <input class="form-control lg-text" name="est-time" type="number" [(ngModel)]="activeTask.estimatedTime" ngDefaultControl placeholder="Est. Time..." />
+    <div class="input-wrapper">
+      <label for="est-time" class="lg-text">Est. Time:</label>
+      <input class="form-control lg-text focused" name="est-time-hh" type="text" (keydown)="validateNewTaskEstimatedTime($event, 'Hours')" (keyup)="updateNewTaskEstimatedTime()" [(ngModel)]="estimatedTimeHours" ngDefaultControl placeholder="hh" />
+      <span class="lg-text">&#58;</span>
+      <input class="form-control lg-text focused" name="est-time-mm" type="text" (keydown)="validateNewTaskEstimatedTime($event, 'Minutes')" (keyup)="updateNewTaskEstimatedTime()" [(ngModel)]="estimatedTimeMinutes" ngDefaultControl placeholder="mm" />
+    </div>
     <btn label="Create" additionalClasses="add" (click)="addTask()"></btn>
   </div>
 </modal>
