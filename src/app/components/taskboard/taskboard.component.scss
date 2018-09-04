@@ -66,6 +66,18 @@ $task-bg-color: #fff;
     }
   }
 
+  &__timers {
+    display: flex;
+
+    time-card {
+      margin-right: 5px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+
   &__description {
     margin: 10px 0px;
     word-wrap: break-word;

@@ -28,16 +28,18 @@ $bg-color: grey;
   &.active {
     background: #DA7E3B;
 
-    .timecard__clock #hours {
-      transform-origin: 10.552px 9.44397px;
-      animation: spin 39s infinite;
-      animation-timing-function: linear;
-    }
+    &.with-animation {
+      .timecard__clock #hours {
+        transform-origin: 10.552px 9.44397px;
+        animation: spin 39s infinite;
+        animation-timing-function: linear;
+      }
 
-    .timecard__clock #minutes {
-      transform-origin: 10.5331px 9.83558px;
-      animation: spin 3s infinite;
-      animation-timing-function: linear;
+      .timecard__clock #minutes {
+        transform-origin: 10.5331px 9.83558px;
+        animation: spin 3s infinite;
+        animation-timing-function: linear;
+      }
     }
   }
 }

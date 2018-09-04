@@ -1,12 +1,22 @@
 <div class="task-board__header">
   <h3>{{ title }}</h3>
-  <time-card [time]="timeType === 'actual' ? actualTime : estimatedTime" [timeType]="timeType" (click)="toggleBoardTime()"></time-card>
+  <time-card [time]="timeType === 'actual' ? actualTime : estimatedTime"
+             [timeType]="timeType"
+             (click)="toggleBoardTime()"
+             [showAnimation]="false"></time-card>
 </div>
 <cdk-drop [id]="status" class="task-board__tasks" (dropped)="handleDrop($event)" [connectedTo]="connectedLists">
   <div *ngFor="let task of tasks" class="task" cdkDrag [cdkDragData]="task">
       <div class="task__header">
         <h4 cdkDragHandle>{{ task.name }}</h4>
-        <time-card [time]="task.timerRunning ? task.actualTime : task.estimatedTime" (click)="toggleTimer(task)" [timeType]="task.timerRunning ? 'actual' : 'estimated'" [showLabel]="false"></time-card>
+      </div>
+      <div class="task__timers">
+        <time-card [time]="task.estimatedTime"
+                   timeType="estimated"></time-card>
+        <time-card [time]="task.actualTime"
+                   (click)="toggleTimer(task)"
+                   timeType="actual"
+                   [running]="task.timerRunning"></time-card>
       </div>
       <div class="task__body" cdkDragHandle>
       <textarea class="task__description" disabled>{{ task.description }}</textarea>

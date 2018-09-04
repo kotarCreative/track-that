@@ -13,7 +13,9 @@ export class TimeCardComponent {
   // Props
   @Input() time = 0;
   @Input() timeType = 'estimated';
+  @Input() showAnimation = true;
   @Input() showLabel = true;
+  @Input() running = false;
 
   // Computed
   get formattedTime() {
