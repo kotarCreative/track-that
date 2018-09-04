@@ -85,6 +85,18 @@ export class AppComponent implements AfterContentInit, OnInit {
     }
   }
 
+  getTasks(status) {
+    let taskKey = status.toLowerCase().split('-');
+    for (let i = 1; i < taskKey.length; i++) {
+        taskKey[i] = taskKey[i].split('');
+        taskKey[i][0] = taskKey[i][0].toUpperCase();
+        taskKey[i] = taskKey[i].join('');
+    }
+
+    taskKey = taskKey.join('') + 'Tasks';
+    return this[taskKey].sort((a, b) => a.order > b.order);
+  }
+
   handleAddTask(status) {
     this.activeTask = new Task(this.tasks.length, '', '', null, null, status, this.tasks.length);
     this.showAddTaskModal = true;
@@ -103,18 +115,6 @@ export class AppComponent implements AfterContentInit, OnInit {
   handleRemoveTask(task) {
     this.activeTask = task;
     this.showRemoveTaskModal = true;
-  }
-
-  getTasks(status) {
-    let taskKey = status.toLowerCase().split('-');
-    for (let i = 1; i < taskKey.length; i++) {
-        taskKey[i] = taskKey[i].split('');
-        taskKey[i][0] = taskKey[i][0].toUpperCase();
-        taskKey[i] = taskKey[i].join('');
-    }
-
-    taskKey = taskKey.join('') + 'Tasks';
-    return this[taskKey].sort((a, b) => a.order > b.order);
   }
 
   removeTask() {
@@ -153,6 +153,8 @@ export class AppComponent implements AfterContentInit, OnInit {
   }
 
   resetActiveTask() {
+    this.estimatedTimeHours = null;
+    this.estimatedTimeMinutes = null;
     this.activeTask = new Task(-1, '', '', null, null, 'planned', -1);
   }
 

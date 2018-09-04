@@ -15,7 +15,13 @@
   <div *ngIf="successMessage" class="success" (click)="successMessage = null">{{ successMessage }}</div>
 </div>
 <div class="track-that__boards">
-  <task-board *ngFor="let status of ['planned', 'in-progress', 'complete']" [status]="status" [tasks]="getTasks(status)" (addTask)="handleAddTask($event)" (removeTask)="handleRemoveTask($event)" (changeTaskStatus)="changeTaskStatus($event)" (reorderTask)="reorderTask($event)">
+  <task-board *ngFor="let status of ['planned', 'in-progress', 'complete']"
+              [status]="status"
+              [tasks]="getTasks(status)"
+              (addTask)="handleAddTask($event)"
+              (removeTask)="handleRemoveTask($event)"
+              (changeTaskStatus)="changeTaskStatus($event)"
+              (reorderTask)="reorderTask($event)">
   </task-board>
 </div>
 
@@ -29,7 +35,7 @@
 </modal>
 
 <!-- Add Task Modal -->
-<modal [show]="showAddTaskModal" (close)="cancelAddTask()">
+<modal id="add-task-modal" [show]="showAddTaskModal" (close)="cancelAddTask()">
   <input class="form-control lg-text" name="name" title [(ngModel)]="activeTask.name" ngDefaultControl placeholder="Name..." />
 
   <div *ngIf="errorMessage" class="notices mt--20">

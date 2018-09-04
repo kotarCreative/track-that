@@ -53,6 +53,19 @@ $task-bg-color: #fff;
   padding-top: 1px;
   border-radius: $task-border-radius;
 
+  &__header {
+    display: flex;
+    align-items: center;
+
+    h4 {
+      flex: 1;
+    }
+
+    time-card {
+      margin-left: auto;
+    }
+  }
+
   &__description {
     margin: 10px 0px;
     word-wrap: break-word;
@@ -66,8 +79,12 @@ $task-bg-color: #fff;
     justify-content: flex-end;
     align-items: center;
 
-    .timecard-wrapper {
-      margin-right: auto;
+    btn {
+      margin-left: 5px;
+
+      &:first-child {
+        margin-left: 0px;
+      }
     }
   }
 }

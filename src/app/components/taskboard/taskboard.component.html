@@ -4,12 +4,14 @@
 </div>
 <cdk-drop [id]="status" class="task-board__tasks" (dropped)="handleDrop($event)" [connectedTo]="connectedLists">
   <div *ngFor="let task of tasks" class="task" cdkDrag [cdkDragData]="task">
-    <div class="task__body" cdkDragHandle>
-      <h4>{{ task.name }}</h4>
+      <div class="task__header">
+        <h4 cdkDragHandle>{{ task.name }}</h4>
+        <time-card [time]="task.timerRunning ? task.actualTime : task.estimatedTime" (click)="toggleTimer(task)" [timeType]="task.timerRunning ? 'actual' : 'estimated'" [showLabel]="false"></time-card>
+      </div>
+      <div class="task__body" cdkDragHandle>
       <textarea class="task__description" disabled>{{ task.description }}</textarea>
     </div>
     <div class="task__footer">
-      <time-card [time]="task.timerRunning ? task.actualTime : task.estimatedTime" (click)="toggleTimer(task)" [timeType]="task.timerRunning ? 'actual' : 'estimated'"></time-card>
       <btn label="REMOVE" additionalClasses="remove" (click)="handleRemoveTask(task)"></btn>
     </div>
   </div>

@@ -97,6 +97,11 @@ $success: #73C85E;
   }
 }
 
+#add-task-modal {
+  input[name="name"] {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 956px) {
   .track-that__boards {
     flex-flow: column;
