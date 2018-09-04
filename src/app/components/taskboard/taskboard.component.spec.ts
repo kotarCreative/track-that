@@ -12,6 +12,7 @@ describe('TaskBoardComponent', () => {
   let component: TaskBoardComponent;
   let fixture: ComponentFixture<TaskBoardComponent>;
   let estimatedTime = 0;
+  let actualTime = 0;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,20 +34,25 @@ describe('TaskBoardComponent', () => {
     component.status = 'in-progress';
 
     const tasks = [];
-    let count = 0;
+    let estCount = 0,
+        actualCount = 0;
     for (let i = 0; i < 10; i++) {
-      const time = getRandomIntInclusive(1, 10);
-      count += time;
+      const time = getRandomIntInclusive(1, 10),
+            actTime = getRandomIntInclusive(1, 10);
+      estCount += time;
+      actualCount += actTime;
       tasks.push(new Task(
         i,
         'Task ' + i,
         'This is a description.',
         time,
+        actTime,
         'in-progress',
         i
       ));
     }
-    estimatedTime = count;
+    estimatedTime = estCount;
+    actualTime = actualCount;
     component.tasks = tasks;
     fixture.detectChanges();
   });
@@ -68,6 +74,11 @@ describe('TaskBoardComponent', () => {
   // Test estimated time calculation
   it(`should calculate the estimated time for all tasks`, async(() => {
     expect(component.estimatedTime).toEqual(estimatedTime);
+  }));
+
+  // Test actual time calculation
+  it(`should calculate the actual time for all tasks`, async(() => {
+    expect(component.actualTime).toEqual(actualTime);
   }));
 });
 
